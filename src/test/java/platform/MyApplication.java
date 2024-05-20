@@ -1,11 +1,13 @@
 package platform;
 
 import pages.LoginPage;
+import pages.SearchPage;
 
 public class MyApplication {
-    public LoginPage loginpage;
+    public SearchPage search;
+    public  LoginPage login;
 
     public MyApplication(){
-        loginpage = new LoginPage();
+        search = new SearchPage();
     }
 }
