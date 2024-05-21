@@ -1,44 +1,43 @@
 package driver;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 public class WebDriverSingleton {
-    public static WebDriverSingleton webDriverSingleton = null ;
-    public static WebDriver webDriver;
-
-    public WebDriverSingleton(){
-        setCapabilities();
-    }
-
-    public WebDriverSingleton getWebDriverSingleton(){
-        if(webDriverSingleton==null){
+    private static WebDriver webDriver;
+    private static WebDriverSingleton webDriverSingleton = null;
+    public static WebDriverSingleton getWebDriverSingleton(){
+        if(webDriverSingleton == null){
             webDriverSingleton = new WebDriverSingleton();
         }
         return webDriverSingleton;
     }
-
     public static WebDriver getWebDriver(){
         return webDriver;
     }
-
-    public void setCapabilities(){
-        ChromeOptions options = new ChromeOptions();
-        options.setAcceptInsecureCerts(true);
-        options.addArguments("--remote-allow-origins=*");
+    public void setDriverCapabilities(){
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--disable-popup-blocking");
         options.addArguments("start-maximized");
-        options.addArguments("disible-infobars");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--enable-javascript");
+        options.addArguments("disable-infobars");
+        webDriver = new EdgeDriver(options);
+    }
+    public WebDriverSingleton(){
+        setDriverCapabilities();
     }
 
-    public void navigateTo(String x){
-        webDriver.navigate().to("");
+
+    public void navigateTo(String link) {
+        webDriver.navigate().to(link);
     }
-    public void quit(){
-        webDriver.quit();
+    public void refreshCurrentUrl(){
+        webDriver.navigate().refresh();
     }
     public void resetCashe(){
         webDriver.manage().deleteAllCookies();
+    }
+    public void close(){
+        webDriver.quit();
     }
 }
