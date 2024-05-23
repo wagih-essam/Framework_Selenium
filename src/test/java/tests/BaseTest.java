@@ -8,6 +8,7 @@ public class BaseTest {
     protected static MyApplication myapp = new MyApplication();
 
     public BaseTest(){
+
         webDriver = WebDriverSingleton.getWebDriverSingleton();
     }
 

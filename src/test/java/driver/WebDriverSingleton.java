@@ -23,9 +23,9 @@ public class WebDriverSingleton {
 
     public void setDriverCapabilities() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-popup-blocking");
+//        options.addArguments("--disable-popup-blocking");
         options.addArguments("start-maximized");
-        options.addArguments("disable-infobars");
+//        options.addArguments("disable-infobars");
         webDriver = new ChromeDriver(options);
     }
 
@@ -44,7 +44,7 @@ public class WebDriverSingleton {
         webDriver.navigate().refresh();
     }
 
-    public void resetCashe() {
+    public void resetcach() {
         webDriver.manage().deleteAllCookies();
     }
 
