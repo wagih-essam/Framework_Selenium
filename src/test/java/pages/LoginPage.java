@@ -14,9 +14,16 @@ public class LoginPage extends BasePage {
         WebDriverSingleton.getWebDriver().findElement(userNameField).sendKeys(username);
         WebDriverSingleton.getWebDriver().findElement(passWordField).sendKeys(password);
         WebDriverSingleton.getWebDriver().findElement(loginButton).click();
+    }
 
-
-
+    public void enterUserNAme(String username){
+        WebDriverSingleton.getWebDriver().findElement(userNameField).sendKeys(username);
+    }
+    public void enterPassWord(String password){
+        WebDriverSingleton.getWebDriver().findElement(passWordField).sendKeys(password);
+    }
+    public void clickLoginButton(){
+        WebDriverSingleton.getWebDriver().findElement(loginButton).click();
     }
 
 
